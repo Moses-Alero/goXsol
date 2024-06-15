@@ -1,0 +1,17 @@
+package components
+
+templ Balance(){
+   <div>
+    <div id="balance"></div> 
+   </div>
+}
+
+templ Header(){
+    <header>
+        <nav class="navbar">
+            <img src="/assets/static-assets/solanaLogo.png" alt="Logo" class="nav-logo">
+            <span class="nav-title">Token Generator</span>
+            @Balance()
+        </nav>
+    </header>
+}

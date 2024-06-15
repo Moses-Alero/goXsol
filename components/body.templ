@@ -1,0 +1,42 @@
+package components
+
+
+
+templ Mint(address string) {
+    <label for="token-mint">Token Mint</label><br>
+    <input type="text" class="addr" name="token-mint" value={address} placeholder="Enter Token Mint"><br> 
+}
+
+templ CreateToken(mintAddr, tokenAddr string){
+    @Mint(mintAddr)
+    <label for="token-accct-owner">Recepient:</label><br>
+    <input type="text" id="token-acct-owner" name="token-acct-owner" value={tokenAddr} placeholder="Enter Token Account Owner Public Key"><br>
+}
+
+templ Body(){
+    <div class="content">
+        <div>
+            <h1>Balance: <span id="balance-wallet">0</span></h1>
+            <button hx-get="/create-mint" hx-target="#token-mint" hx-swap="outerHTML">Create mint</button>
+            <form class="mint-stuff">
+                <label for="token-mint">Token Mint:</label><br>
+                <input type="text" id="token-mint" name="token-mint" placeholder="Enter Token Mint"><br>
+                <label for="token-acct">Token Account Owner:</label><br>
+                <input type="text" id="token-acct" name="token-acct-owner" placeholder="Enter Token Account Owner Public Key"><br>
+                <button hx-post="/create-token-account" hx-target="#token-acct-data" hx-swap="outerHTML">Create Token Account</button><br>
+            </form>
+            
+            <div class="token-acct">
+                <div id="token-acct-data">
+                    <label for="token-mint">Token Mint:</label><br>
+                    <input type="text" id="token-mint-acct" name="token-mint" placeholder="Enter Token Mint"><br>
+                    <label for="token-acct-owner">Recipient:</label><br>
+                    <input type="text" id="token-acct-owner" name="token-acct-owner" placeholder="Enter Token Account Owner Public Key"><br>
+                </div>
+                <label for="amount-to-mint">Amount Tokens to Mint</label><br>
+                <input type="number" name="amount-to-mint" id="amount-to-mint"><br>
+                <button>Mint Tokens</button> 
+            </div>
+        </div>
+    </div>   
+}
